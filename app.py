@@ -252,11 +252,26 @@ def drives():
 
         # Check both CGPA and branch
         cgpa_eligible = student_cgpa >= minimum_cgpa
+        
+                # Check both CGPA and branch
+        cgpa_eligible = student_cgpa >= minimum_cgpa
+
+        eligible_branches = [
+            branch.strip().upper()
+            for branch in eligibility_branch.split(",")
+        ]
+
+        eligible_branches_normalized = [
+            branch_map.get(branch, branch)
+            for branch in eligible_branches
+        ]
 
         branch_eligible = (
             student_branch_normalized
-            == eligibility_branch_normalized
+            in eligible_branches_normalized
         )
+
+        eligible = cgpa_eligible and branch_eligible
 
         eligible = cgpa_eligible and branch_eligible
 
