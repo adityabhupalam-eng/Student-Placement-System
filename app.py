@@ -1,15 +1,15 @@
 from flask import Flask, render_template, request, session,redirect,flash
 from flask_mysqldb import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
-
+import os
 app = Flask(__name__)
 
 # CONFIGURATION 
 
-app.config["MYSQL_HOST"] = "localhost"
-app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = "Aditya@41432"
-app.config["MYSQL_DB"] = "placement_system"
+app.config["MYSQL_HOST"] = os.environ.get("MYSQL_HOST", "localhost")
+app.config["MYSQL_USER"] = os.environ.get("MYSQL_USER", "root")
+app.config["MYSQL_PASSWORD"] = os.environ.get("MYSQL_PASSWORD", "")
+app.config["MYSQL_DB"] = os.environ.get("MYSQL_DB", "placement_system")
 
 app.secret_key = "student-placement-secret"
 
