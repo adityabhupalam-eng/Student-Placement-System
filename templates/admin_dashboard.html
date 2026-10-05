@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+
+    <div class="nav">
+
+        <a href="/admin-dashboard">
+            Admin Dashboard
+        </a>
+
+        <a href="/companies">
+            Companies
+        </a>
+
+        <a href="/students">
+            Students
+        </a>
+
+        <a href="/admin-applications">
+            Applications
+        </a>
+
+        <a href="/logout">
+            Logout
+        </a>
+
+    </div>
+
+
+    <!-- Main Content -->
+
+    <div class="container">
+
+        <h1>Admin Dashboard</h1>
+
+        <p>
+            Welcome, {{ name }}
+        </p>
+
+
+        <!-- Company Management -->
+
+        <div class="card">
+
+            <h2>Company Management</h2>
+
+            <p>
+                Manage companies participating
+                in campus placements.
+            </p>
+
+            <a href="/add-company">
+                <button>
+                    Add Company
+                </button>
+            </a>
+
+            <a href="/companies">
+                <button>
+                    View Companies
+                </button>
+            </a>
+
+        </div>
+
+
+        <!-- Placement Drive Management -->
+
+        <div class="card">
+
+            <h2>Placement Drive Management</h2>
+
+            <p>
+                Create placement drives and define
+                eligibility requirements.
+            </p>
+
+            <a href="/add-drive">
+                <button>
+                    Create Placement Drive
+                </button>
+            </a>
+
+        </div>
+
+
+        <!-- Student Management -->
+
+        <div class="card">
+
+            <h2>Student Management</h2>
+
+            <p>
+                View students registered in the
+                placement management system.
+            </p>
+
+            <a href="/students">
+                <button>
+                    View Students
+                </button>
+            </a>
+
+        </div>
+
+
+        <!-- Application Management -->
+
+        <div class="card">
+
+            <h2>Application Management</h2>
+
+            <p>
+                Review student applications and
+                update their application status.
+            </p>
+
+            <a href="/admin-applications">
+                <button>
+                    View Applications
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+

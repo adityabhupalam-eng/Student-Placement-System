@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Applications</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="nav">
+
+        <a href="/admin-dashboard">
+            Admin Dashboard
+        </a>
+
+        <a href="/companies">
+            Companies
+        </a>
+
+        <a href="/students">
+            Students
+        </a>
+
+        <a href="/admin-applications">
+            Applications
+        </a>
+
+        <a href="/logout">
+            Logout
+        </a>
+
+    </div>
+
+    <div class="container">
+
+        <h1>Student Applications</h1>
+
+        {% if applications %}
+
+            {% for application in applications %}
+
+                <div class="card">
+
+                    <h2>{{ application[1] }}</h2>
+
+                    <p>
+                        <strong>Email:</strong>
+                        {{ application[2] }}
+                    </p>
+
+                    <p>
+                        <strong>Company:</strong>
+                        {{ application[3] }}
+                    </p>
+
+                    <p>
+                        <strong>Job Role:</strong>
+                        {{ application[4] }}
+                    </p>
+
+                    <p>
+                        <strong>Application Date:</strong>
+                        {{ application[5] }}
+                    </p>
+
+                    <p>
+                        <strong>Current Status:</strong>
+                        {{ application[6] }}
+                    </p>
+
+                    <form
+                        action="/update-status/{{ application[0] }}"
+                        method="POST"
+                    >
+
+                        <div class="form-group">
+
+                            <label>Change Status</label>
+
+                            <select name="status">
+
+                                <option value="Applied">
+                                    Applied
+                                </option>
+
+                                <option value="Shortlisted">
+                                    Shortlisted
+                                </option>
+
+                                <option value="Selected">
+                                    Selected
+                                </option>
+
+                                <option value="Rejected">
+                                    Rejected
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <button type="submit">
+                            Update Status
+                        </button>
+
+                    </form>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="card">
+                <p>No applications have been submitted yet.</p>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>

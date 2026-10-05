@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Company</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="nav">
+
+        <a href="/admin-dashboard">Admin Dashboard</a>
+        <a href="/companies">Companies</a>
+        <a href="/students">Students</a>
+        <a href="/admin-applications">Applications</a>
+        <a href="/logout">Logout</a>
+
+    </div>
+
+    <div class="form-card">
+
+        <h1>Add Company</h1>
+
+        <form action="/add-company" method="POST">
+
+            <div class="form-group">
+
+                <label>Company Name</label>
+
+                <input
+                    type="text"
+                    name="company_name"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Location</label>
+
+                <input
+                    type="text"
+                    name="location"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Description</label>
+
+                <textarea
+                    name="description"
+                    rows="5"
+                ></textarea>
+
+            </div>
+
+            <button type="submit">
+                Add Company
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

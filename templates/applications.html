@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Applications</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="nav">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/drives">Placement Drives</a>
+        <a href="/applications">My Applications</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="container">
+
+        <h1>My Applications</h1>
+
+        {% if applications %}
+
+            {% for application in applications %}
+
+                <div class="card">
+
+                    <h2>{{ application[0] }}</h2>
+
+                    <p>
+                        <strong>Job Role:</strong>
+                        {{ application[1] }}
+                    </p>
+
+                    <p>
+                        <strong>Application Date:</strong>
+                        {{ application[2] }}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+
+                        {% if application[3] == "Selected" %}
+                            <span class="success">
+                                {{ application[3] }}
+                            </span>
+
+                        {% elif application[3] == "Rejected" %}
+                            <span class="danger">
+                                {{ application[3] }}
+                            </span>
+
+                        {% elif application[3] == "Shortlisted" %}
+                            <span class="warning">
+                                {{ application[3] }}
+                            </span>
+
+                        {% else %}
+                            <span class="info">
+                                {{ application[3] }}
+                            </span>
+                        {% endif %}
+
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="card">
+                <p>You have not applied for any placement drives yet.</p>
+
+                <a href="/drives">
+                    View Placement Drives
+                </a>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>

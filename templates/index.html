@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Placement Management System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="nav">
+        <a href="/">Placement System</a>
+        <a href="/admin-login">Admin Login</a>
+    </div>
+
+    <div class="form-card">
+
+        <h1>Student Login</h1>
+        {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="success">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+        <p>Login to access placement opportunities.</p>
+
+        <form action="/login" method="POST">
+
+            <div class="form-group">
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    name="email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    name="password"
+                    required
+                >
+            </div>
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <hr>
+
+        <p>
+            Don't have an account?
+        </p>
+
+        <a href="/register">
+            Create Student Account
+        </a>
+
+    </div>
+
+</body>
+
+</html>
+

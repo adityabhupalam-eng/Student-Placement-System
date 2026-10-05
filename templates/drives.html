@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Placement Drives</title>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="success">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="nav">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/drives">Placement Drives</a>
+        <a href="/applications">My Applications</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="container">
+
+        <h1>Placement Drives</h1>
+
+        <p>Explore available placement opportunities.</p>
+
+        {% for drive in drives %}
+
+        <div class="card">
+
+            <h2>{{ drive[1] }}</h2>
+
+            <p>
+                <strong>Job Role:</strong>
+                {{ drive[2] }}
+            </p>
+
+            <p>
+                <strong>Minimum CGPA:</strong>
+                {{ drive[3] }}
+            </p>
+
+            <p>
+                <strong>Eligible Branch:</strong>
+                {{ drive[4] }}
+            </p>
+
+            <p>
+                <strong>Drive Date:</strong>
+                {{ drive[5] }}
+            </p>
+
+            <hr>
+
+            {% if drive[6] %}
+
+                <p class="success">Eligible</p>
+
+                <form action="/apply/{{ drive[0] }}" method="POST">
+                    <button type="submit">Apply</button>
+                </form>
+
+            {% else %}
+
+                <p class="danger">Not Eligible</p>
+
+                <p>
+                    You do not meet the eligibility requirements for this drive.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>

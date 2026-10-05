@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="nav">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/drives">Placement Drives</a>
+        <a href="/applications">My Applications</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="container">
+
+        <h1>Student Dashboard</h1>
+
+        <p>Welcome, {{ student[0] }}</p>
+
+        <div class="card">
+
+            <h2>Student Profile</h2>
+
+            <p>
+                <strong>Name:</strong>
+                {{ student[0] }}
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                {{ student[1] }}
+            </p>
+
+            <p>
+                <strong>CGPA:</strong>
+                {{ student[2] }}
+            </p>
+
+            <p>
+                <strong>Branch:</strong>
+                {{ student[3] }}
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Placement</h2>
+
+            <p>
+                Find placement opportunities and track your applications.
+            </p>
+
+            <a href="/drives">
+                <button>View Placement Drives</button>
+            </a>
+
+            <br><br>
+
+            <a href="/applications">
+                <button>My Applications</button>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

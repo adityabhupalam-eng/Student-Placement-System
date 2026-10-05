@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Placement Drive</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="nav">
+
+        <a href="/admin-dashboard">Admin Dashboard</a>
+        <a href="/companies">Companies</a>
+        <a href="/students">Students</a>
+        <a href="/admin-applications">Applications</a>
+        <a href="/logout">Logout</a>
+
+    </div>
+
+    <div class="form-card">
+
+        <h1>Create Placement Drive</h1>
+
+        <form action="/add-drive" method="POST">
+
+            <div class="form-group">
+
+                <label>Company</label>
+
+                <select name="company_id" required>
+
+                    {% for company in companies %}
+
+                        <option value="{{ company[0] }}">
+                            {{ company[1] }}
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Job Role</label>
+
+                <input
+                    type="text"
+                    name="job_role"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Minimum CGPA</label>
+
+                <input
+                    type="number"
+                    name="minimum_cgpa"
+                    step="0.01"
+                    min="0"
+                    max="10"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Eligible Branch</label>
+
+                <input
+                    type="text"
+                    name="eligibility_branch"
+                    placeholder="e.g. ECE"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Drive Date</label>
+
+                <input
+                    type="date"
+                    name="drive_date"
+                    required
+                >
+
+            </div>
+
+            <button type="submit">
+                Create Placement Drive
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
